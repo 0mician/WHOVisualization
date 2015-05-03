@@ -8,3 +8,9 @@
       apt: name=apache2 state=present
     - name: install mongodb
       apt: name=mongodb state=present
+    - name: install pip
+      apt: name=python-pip state=present
+    - name: install python-dev
+      apt: name=python-dev
+    - name: install python packages with pip
+      pip: requirements=/vagrant/requirements.txt
