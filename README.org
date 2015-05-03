@@ -1,0 +1,25 @@
+* WHOVisualization
+
+** The dataset
+
+The dataset can be found in the data folder of this project, it was downloaded from:
+
+http://www.exploredata.net/Downloads
+
+* Reproducibility
+
+To enable users to reproduce the visualization, I have made all
+sources available here, along with the raw data and its
+processing. To avoid configuration specific issues, I am also
+providing a vagrant configuration file.
+
+Make sure that you use vagrant v 1.6 or above otherwise the
+provisioning of the VM will not succeed.
+
+https://www.vagrantup.com/downloads.html
+
+Just clone this repo, and go vagrant up
+
+* Data cleaning and database creation
+
+x
