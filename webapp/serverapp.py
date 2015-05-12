@@ -1,14 +1,11 @@
 from flask import Flask
 from flask import render_template
-from flask.ext.pymongo import PyMongo
+from pymongo import MongoClient
 import json
 from bson import json_util
 from bson.json_util import dumps
 
 app = Flask(__name__)
-
-app.config['MONGO_DBNAME'] = 'whodb'
-mongo = PyMongo(app, config_prefix="MONGO")
 
 @app.route("/")
 def index():
@@ -16,10 +13,11 @@ def index():
 
 @app.route("/test")
 def get_who():
-    items = list(mongo.db.who.find())
+    c = MongoClient()
+    db = c.whodb
     json_who = []
-    for item in items:
-        json_who.append(item)
+    for result in db.who.find():
+        json_who.append(result)
     json_who = json.dumps(json_who, default=json_util.default)
     return json_who
 
