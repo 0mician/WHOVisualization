@@ -5,7 +5,7 @@ import json
 from bson import json_util
 from bson.json_util import dumps
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 @app.route("/")
 def index():

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>WHO Visualization</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <style>
       path {
       stroke: white;
@@ -10,7 +10,7 @@
       fill: black;
       }
     </style>
-    <script src="./js/d3.min.js"></script>
+    <script src="/js/d3.min.js"></script>
     <script src="http://d3js.org/topojson.v0.min.js"></script>
   </head>
   <body>
@@ -29,7 +29,7 @@
           .projection(projection);
       var g = svg.append("g");
       
-      d3.json("world-110m2.json", function(error, topology) {
+      d3.json("/json/world-110m2.json", function(error, topology) {
           g.selectAll("path")
             .data(topojson.object(topology, topology.objects.countries)
                 .geometries)
@@ -39,6 +39,6 @@
       });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>   
+    <script src="/js/bootstrap.min.js"></script>   
   </body>
 </html>
