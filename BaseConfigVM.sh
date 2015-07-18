@@ -12,7 +12,7 @@ echo '.. done!'
 DB_NAME=whoviz
 CSV_WHO=/vagrant/data/WHO.csv
 
-echo 'Creation of mongoDB $DB_NAME.. '
+echo 'Creation of mongoDB $DB_NAME .. '
 if [ ! -e /data/db/$DB_NAME.ns ]; then
     `mongoimport --db $DB_NAME --collection who --type csv --headerline --file $CSV_WHO`
 fi
