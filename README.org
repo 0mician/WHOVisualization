@@ -1,13 +1,11 @@
 * WHOVisualization
-
 ** The dataset
-
-The dataset can be found in the data folder of this project, it was downloaded from:
+The dataset can be found in the data folder of this project, it was
+downloaded from:
 
 http://www.exploredata.net/Downloads
 
 * Reproducibility
-
 To enable users to reproduce the visualization, I have made all
 sources available here, along with the raw data and its
 processing. To avoid configuration specific issues, I am also
@@ -18,8 +16,26 @@ provisioning of the VM will not succeed.
 
 https://www.vagrantup.com/downloads.html
 
-Just clone this repo, and go vagrant up
+To test the application locally:
+
+#+BEGIN_SRC shell
+$ mkdir whatever && cd whatever
+$ git clone https://https://github.com/Milt0n/WHOVisualization
+$ vagrant up
+#+END_SRC
+
+Then browse to: TBD
 
 * Data cleaning and database creation
-** CSV file
+** CSV file to mongoDB
+The datafile was cleaned by the folks at exploredata.net, so we just
+need to import it. 
+
+This is taken care of in the provision script, but here is the
+command line to import the data into mongoDB:
+
+#+BEGIN_SRC shell
+vagrant up && vagrant ssh
+mongoimport --db whoviz --collection who --type csv --headerline --file WHO.csv
+#+END_SRC
 
