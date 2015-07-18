@@ -23,6 +23,7 @@ data/.~lock.WHO.csv#
 
 # vagrant folder
 .vagrant/
+node_modules/
 
 # various notes
 notes/
