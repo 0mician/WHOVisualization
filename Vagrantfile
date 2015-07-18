@@ -9,7 +9,5 @@ Vagrant.configure(2) do |config|
     v.memory = 1024
     v.cpus = 1
   end
-  config.vm.provision :ansible do |ansible|
-    ansible.playbook = "playbook.yml"
-  end
+  config.vm.provision "shell", path: "BaseConfigVM.sh"
 end
