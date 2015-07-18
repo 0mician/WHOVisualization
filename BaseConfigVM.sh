@@ -3,7 +3,9 @@
 # package required for the project
 echo 'provisioning.. '
 sudo apt-get update
-sudo apt-get install -y nodejs npm mongodb
+# packages available through apt-get are quite old
+curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
+sudo apt-get install -y nodejs mongodb
 echo '.. done!'
 
 # database creation
