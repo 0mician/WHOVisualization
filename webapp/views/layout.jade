@@ -1,7 +1,35 @@
 doctype html
-html
+html 
   head
     title= title
+    link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js',charset='utf-8')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js')
+
   body
-    block content
+    div.site-wrapper
+      div.site-wrapper-inner
+        div.cover-container
+          div.masthead.clearfix
+            div.inner
+              h3.masthead-brand WHO Visualization
+              nav
+                ul.nav.masthead-nav
+                  li.active 
+                    a(href='#') Home
+                  //- To implement
+                  li: a(href='#') Visualization 
+                  li: a(href='#') Gamification
+                  
+          div.inner.cover
+            block content
+            
+          div.mastfoot
+            div.inner
+              p Created by Cedric
+              p: a(href='https://github.com/Milt0n/WHOVisualization') Sauce
+  
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
