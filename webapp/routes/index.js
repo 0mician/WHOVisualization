@@ -18,4 +18,8 @@ router.get('/who', function(req, res) {
     });
 });
 
+router.get('/whoviz', function(req, res, next) {
+    res.render('whoviz', {});
+});
+
 module.exports = router;
