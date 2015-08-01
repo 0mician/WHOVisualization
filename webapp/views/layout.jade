@@ -8,27 +8,27 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js')
 
   body
-    div.site-wrapper
-      div.site-wrapper-inner
-        div.cover-container
-          div.masthead.clearfix
-            div.inner
-              h3.masthead-brand WHO Visualization
-              nav
-                ul.nav.masthead-nav
-                  li.active 
-                    a(href='#') Home
-                  //- To implement
-                  li: a(href='#') Visualization 
-                  li: a(href='#') Gamification
+    nav.navbar.navbar-fixed-top
+      div.container
+        div.navbar-header
+          a(href='#', class='navbar-brand') WHO Visualization
+        nav
+        div#navbar(class='collapse navbar-collapse pull-right')
+          ul.nav.navbar-nav
+              li: a(href='#') Home
+              //- To implement
+              li: a(href='/whoviz/') Visualization 
+              li: a(href='/who3d/') Fact sheets
+              li: a(href='#') Gamification
                   
-          div.inner.cover
-            block content
+    div
+      block content
             
-          div.mastfoot
-            div.inner
-              p Created by Cedric
-              p: a(href='https://github.com/Milt0n/WHOVisualization') Sauce
+    div.footer
+      div.container
+        div.row
+          p.text-muted Created by Cedric
+          p: a(href='https://github.com/Milt0n/WHOVisualization') Sauce
   
     script(src='https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
