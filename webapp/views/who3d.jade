@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  div.container-fluid
+  div.container
     div.row
-      div.col-sm-6
-        div#map
+      div#map.col-lg-6
         script(type='text/javascript', src='/javascripts/who3d.js')
-      div.col-sm-6
-        p some descriptions to come
+      div.col-lg-6
+        div.ui-widget
+          label(for='tags') Country
+          input#tags

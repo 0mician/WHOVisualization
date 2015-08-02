@@ -1,7 +1,7 @@
-var width = 400,
-    height = 400;
+var width = 600,
+    height = 600;
 
-var projection = d3.geo.orthographic().scale(190).clipAngle(90).translate([200,200]);
+var projection = d3.geo.orthographic().scale(300).clipAngle(90).translate([300,300]);
     //.scale(248)
     //.clipAngle(90);
 
@@ -55,7 +55,7 @@ function ready(error, world, names) {
             c.fillStyle = "#bbb", c.beginPath(), path(land), c.fill();
             c.fillStyle = "rgb(25,25,112)", c.beginPath(), path(countries[i]), c.fill();
             c.strokeStyle = "#fff", c.lineWidth = .5, c.beginPath(), path(borders), c.stroke();
-            c.strokeStyle = "#000", c.lineWidth = 2, c.beginPath(), path(globe), c.stroke();
+            c.strokeStyle = "#000", c.lineWidth = 1, c.beginPath(), path(globe), c.stroke();
           };
         })
       .transition()
