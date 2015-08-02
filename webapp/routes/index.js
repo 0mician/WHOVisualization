@@ -12,9 +12,8 @@ router.get('/who3d', function(req, res, next) {
 
 router.get('/who', function(req, res) {
     var db = req.db;
-    var collection = db.get('who');
-    collection.find({},{},function(e,docs){
-      res.json(docs);
+    db.who.find({}, {}, function(e, docs){
+        res.json(docs);
     });
 });
 
@@ -22,4 +21,57 @@ router.get('/whoviz', function(req, res, next) {
     res.render('whoviz', {});
 });
 
+router.get('/who/columns', function(req, res) {
+    var db = req.db;
+    db.names.find({}, {}, function(e, docs){
+        res.json(docs);
+    });
+});
+
+router.get('/who/:vars', function(req, res) {
+    var db = req.db;
+    var mapper = function(){
+        emit(this[Country], this[CountryID]);
+    };
+    var reducer = function(key, value) {
+        return Array.sum(value);
+    };
+    db.who.mapReduce(
+        function(){
+        emit(this[Country], this[CountryID]);
+        },
+        function(key, value) {
+        return Array.sum(value);
+        },
+        function(e, docs){
+            res.json(docs);
+        });
+});
+/*
+router.get('/who/:vars', function(req, res) {
+    var db = req.db;
+    var param = req.params.vars;
+    db.who.group(
+        {key: {Continent : 1}, 
+         reduce: function(curr, result) { 
+             result.countries.push( 
+                 {"name" : curr['Country'], 
+                  "value" : curr['CountryID'] });}, 
+         initial: { countries : [] }
+        }, function(e, docs){
+            res.json(docs);
+        }
+    );
+});
+*/
 module.exports = router;
+
+//     var mapper = function() {
+//         for (var key in this) { 
+//             emit(key, null);
+//         }
+//     };
+//     var reducer = function(key, stuff) {
+//         return null;
+//     };
+//     db.who.mapReduce(mapper, reducer, {out : "names"});
