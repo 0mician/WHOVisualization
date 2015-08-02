@@ -28,26 +28,8 @@ router.get('/who/columns', function(req, res) {
     });
 });
 
-router.get('/who/:vars', function(req, res) {
-    var db = req.db;
-    var mapper = function(){
-        emit(this[Country], this[CountryID]);
-    };
-    var reducer = function(key, value) {
-        return Array.sum(value);
-    };
-    db.who.mapReduce(
-        function(){
-        emit(this[Country], this[CountryID]);
-        },
-        function(key, value) {
-        return Array.sum(value);
-        },
-        function(e, docs){
-            res.json(docs);
-        });
-});
-/*
+
+// not working yet
 router.get('/who/:vars', function(req, res) {
     var db = req.db;
     var param = req.params.vars;
@@ -63,7 +45,7 @@ router.get('/who/:vars', function(req, res) {
         }
     );
 });
-*/
+
 module.exports = router;
 
 //     var mapper = function() {
