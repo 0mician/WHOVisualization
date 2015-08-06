@@ -3,12 +3,19 @@ extends layout
 block content
   div.container
     div.row
-      div.col-lg-12.col-centered.content-map
+      div.col-lg-12
         div#dropDown
+        br
+  div.container    
+    div.row
+      div.col-lg-12.col-centered.content-map
         script(type='text/javascript', src='/javascripts/whovizunivariate.js')
   div.container
     div.row
-      p#country Country: 
-      p#value Value: 
+      div.col-lg-12
+        div.information
+          p#continent Continent: 
+          p#country Country: 
+          p#value Value: 
 
             

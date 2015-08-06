@@ -29,22 +29,22 @@ router.get('/who/columns', function(req, res) {
 });
 
 
-// not working yet
-router.get('/who/:vars', function(req, res) {
-    var db = req.db;
-    var param = req.params.vars;
-    db.who.group(
-        {key: {Continent : 1}, 
-         reduce: function(curr, result) { 
-             result.countries.push( 
-                 {"name" : curr['Country'], 
-                  "value" : curr['CountryID'] });}, 
-         initial: { countries : [] }
-        }, function(e, docs){
-            res.json(docs);
-        }
-    );
-});
+// // not working yet
+// router.get('/who/:vars', function(req, res) {
+//     var db = req.db;
+//     var param = req.params.vars;
+//     db.who.group(
+//         {key: {Continent : 1}, 
+//          reduce: function(curr, result) { 
+//              result.countries.push( 
+//                  {"name" : curr["Country"], 
+//                   "value" : curr[req.params.vars] });}, 
+//          initial: { countries : [] }
+//         }, function(e, docs){
+//             res.json(docs);
+//         }
+//     );
+// });
 
 module.exports = router;
 
