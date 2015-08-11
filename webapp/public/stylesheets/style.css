@@ -180,3 +180,12 @@ div.tooltip {
 body > div:nth-child(2) > div > div > div:nth-child(2) > div > label {
     margin-right: 20px;
 }
+
+/* .overlay { */
+/*   fill: none; */
+/*   pointer-events: all; */
+/* } */
+
+#info p {
+    color: white;
+}
