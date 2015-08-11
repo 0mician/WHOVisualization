@@ -51,7 +51,31 @@ function updateInfo(data){
         .text(function(d) { return JSON.stringify(d);});
 
     // ENTER + UPDATE
-    info.text(    for (var j = 0, len = countries.length; j < len; j++) {
+    info.text(function(d) { return JSON.stringify(d);});
+    
+    // EXIT
+    info.exit().remove();
+}
+
+function ready(error, world, names, facts){
+    if (error) throw error;
+
+    var globe = {type: "Sphere"},
+        land = topojson.feature(world, world.objects.land),
+        countries = topojson.feature(world, world.objects.countries).features,
+        borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }),
+        i = -1,
+        n = countries.length;
+
+    countries = countries.filter(function(d) {
+        return names.some(function(n) {
+            if (d.id == n.id) return d.name = n.name;
+        });
+    }).sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+    });
+    
+    for (var j = 0, len = countries.length; j < len; j++) {
         lookup[countries[j].name] = countries[j];
     }
     for (var k = 0, l = facts.length; k < l; k++) {
