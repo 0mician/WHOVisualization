@@ -7,11 +7,11 @@ var colors = [""];
 
 // Variable selector
 var dropDown = d3.select("#dropDown").append("select")
-        .attr("name", "Variables")
-        .append("option")
+        .attr("name", "Variables");
+        /*.append("option")
         .text("-- select an indicator --")
         .attr("disabled")
-        .attr("selected");
+        .attr("selected");*/
 
 var names = d3.json("/who/columns", function(error, d){
     if(error){

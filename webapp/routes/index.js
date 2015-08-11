@@ -17,8 +17,19 @@ router.get('/who', function(req, res) {
     });
 });
 
+router.get('/cor', function(req, res) {
+    var db = req.db;
+    db.cor.find({}, {}, function(e, docs){
+        res.json(docs);
+    });
+});
+
 router.get('/whoviz', function(req, res, next) {
     res.render('whoviz', {});
+});
+
+router.get('/heatmap', function(req, res, next) {
+    res.render('heatmap', {});
 });
 
 router.get('/who/columns', function(req, res) {

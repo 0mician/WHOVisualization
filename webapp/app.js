@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 // Database
 //var mongo = require('mongodb');
 var mongojs = require('mongojs');
-var db = mongojs('localhost:27017/whoviz', ['who', 'names']);
+var db = mongojs('localhost:27017/whoviz', ['who', 'names', 'cor']);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
