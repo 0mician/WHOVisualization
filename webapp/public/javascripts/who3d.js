@@ -39,19 +39,32 @@ function setupDropdown(d){
         .attr("value", function (d) { return d.name; });
 }
 
+String.prototype.toCapitalize = function(){ 
+   return this.toLowerCase().replace(/^.|\s\S/g, function(a) { return a.toUpperCase(); });
+};
+
+function printInfo(d){
+    var out = '';
+    for (var p in d) {
+        out += p.toCapitalize() + ': ' + d[p] + '\n';
+    }
+    console.log(out);
+    return out;
+}
+
 function updateInfo(data){
     var info = d3.select("#info").selectAll("p")
             .data(data);
     
     // UPDATE
-    info.text(function(d) { return JSON.stringify(d);} );
+    info.text(function(d) { return printInfo(d);});
     
     // ENTER
     info.enter().append("p")
-        .text(function(d) { return JSON.stringify(d);});
+        .text(function(d) { return printInfo(d);});
 
     // ENTER + UPDATE
-    info.text(function(d) { return JSON.stringify(d);});
+    info.text(function(d) { return printInfo(d);});
     
     // EXIT
     info.exit().remove();
@@ -83,6 +96,21 @@ function ready(error, world, names, facts){
     }
     setupDropdown(countries);
 
+    d3.transition()
+        .duration(2500)
+        .tween("rotate", function() {
+            var p = d3.geo.centroid(lookup["Afghanistan"]),
+                r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
+            return function(t) {
+                projection.rotate(r(t));
+                c.clearRect(0, 0, width, height);
+                c.fillStyle = "#bbb", c.beginPath(), path(land), c.fill();
+                c.fillStyle = "rgb(0,186,252)", c.beginPath(), path(lookup["Afghanistan"]), c.fill();
+                c.strokeStyle = "#fff", c.lineWidth = .5, c.beginPath(), path(borders), c.stroke();
+                c.strokeStyle = "#000", c.lineWidth = 1, c.beginPath(), path(globe), c.stroke();
+            };
+        });
+    
     d3.selectAll("select").on("change", function change(d) {
         var sel = d3.select("select").node().value;
         console.log(lookupfacts[sel]);
@@ -97,7 +125,7 @@ function ready(error, world, names, facts){
                     projection.rotate(r(t));
                     c.clearRect(0, 0, width, height);
                     c.fillStyle = "#bbb", c.beginPath(), path(land), c.fill();
-                    c.fillStyle = "rgb(25,25,112)", c.beginPath(), path(lookup[sel]), c.fill();
+                    c.fillStyle = "rgb(0,186,252)", c.beginPath(), path(lookup[sel]), c.fill();
                     c.strokeStyle = "#fff", c.lineWidth = .5, c.beginPath(), path(borders), c.stroke();
                     c.strokeStyle = "#000", c.lineWidth = 1, c.beginPath(), path(globe), c.stroke();
                 };

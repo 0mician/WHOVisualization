@@ -5,8 +5,17 @@
 html,
 body {
   height: 100%;
-  background-color: rgb(45,45,45);
+  background-color: rgb(26,23,27);
   padding-top: 70px;
+}
+
+.background-body {
+    background-image: url("/images/map.png");
+    margin-top: -70px;
+    margin-bottom: 70px;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
 }
 
 .navbar-fixed-top {
@@ -29,7 +38,7 @@ a:hover, a:focus {
 }
 
 .nav>li>a:hover, .nav>li>a:focus{
-    background-color: rgb(45,45,45);
+    background-color: rgb(26,23,27);
     color: rgb(100,100,100);
 }
 
@@ -43,7 +52,7 @@ a:hover, a:focus {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 70px;
   text-align: center;
   vertical-align: middle;
 }
@@ -188,4 +197,36 @@ body > div:nth-child(2) > div > div > div:nth-child(2) > div > label {
 
 #info p {
     color: white;
+}
+svg {
+    display: block;
+    margin: auto;
+}
+
+.col-centered-boxed{
+    color: white;
+    margin-top: 300px;
+    background-color: rgb(26,23,27);
+    border: solid 1px white;
+}
+
+h1 {
+    color: white;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: white;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    fill: white;
+    font-size: 12px;
+}
+
+.x-label, .y-label {
+    fill: white;
+    font-size: 12px;
 }
